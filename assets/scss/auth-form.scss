@@ -1,0 +1,56 @@
+@use "~/assets/scss/_colors.scss" as *;
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  font-family: Calibri;
+
+  .form-name {
+    text-align: center;
+    font-size: x-large;
+  }
+
+  .section {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    label {
+      padding-left: 25px;
+      font-size: medium;
+    }
+
+    input {
+      border: none;
+      border-radius: 20px;
+
+      background-color: $surface;
+      padding: 15px 25px;
+
+      font-size: medium;
+    }
+  }
+
+  button[type="submit"] {
+    border: none;
+    border-radius: 20px;
+    padding: 15px 20px;
+    background-color: $primary;
+    color: white;
+    font-size: medium;
+    cursor: pointer;
+  }
+
+  .redirect-info {
+    font-style: italic;
+    text-align: center;
+    color: #9b9b9b;
+
+    a {
+      color: $primary;
+      text-decoration: underline;
+    }
+  }
+}
