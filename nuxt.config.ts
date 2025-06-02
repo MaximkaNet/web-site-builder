@@ -24,6 +24,7 @@ export default defineNuxtConfig({
           additionalData: `
           @use "~/assets/scss/_colors.scss" as *;
           @use "~/assets/scss/_reset.scss" as *;
+          @use "~/assets/scss/main.scss" as *;
           `
         }
       }
