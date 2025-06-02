@@ -12,3 +12,16 @@ interface Props {
 }
 defineProps<Props>()
 </script>
+<style lang="scss" scoped>
+.image-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  img {
+    max-width: 40%;
+  }
+}
+</style>

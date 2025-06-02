@@ -37,5 +37,8 @@ const handleFileChange = (event: any) => {
   padding: 20px;
   border: 1px dashed black;
   border-radius: 20px;
+
+  text-align: center;
+  cursor: pointer;
 }
 </style>

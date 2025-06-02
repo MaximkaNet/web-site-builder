@@ -1,5 +1,6 @@
 <template>
-  <p contenteditable="plaintext-only" @blur="blur" @keypress.enter="handleEnter">
+  <p contenteditable="plaintext-only" :class="{ empty: !inputText }" @blur="blur" @input="input"
+    @keypress.enter="handleEnter">
     {{ model }}
   </p>
 </template>
@@ -15,9 +16,14 @@ const props = withDefaults(defineProps<Props>(), {
   disabled: false
 })
 
-const model = defineModel()
+const model = defineModel<string>()
+const inputText = ref<string>(model.value || '')
 
-const blur = (event: any) => { model.value = event.target.textContent }
+const blur = (event: any) => { model.value = event.target.textContent.trim() }
+
+const input = (event: any) => {
+  inputText.value = event.target.textContent.trim()
+}
 
 const handleEnter = (event: any) => {
   if (!props.multiline) {
@@ -26,3 +32,10 @@ const handleEnter = (event: any) => {
   }
 }
 </script>
+<style lang="scss" scoped>
+p.empty::before {
+  content: attr(data-placeholder);
+  color: #aaa;
+  pointer-events: none;
+}
+</style>

@@ -4,7 +4,7 @@
   </button>
 </template>
 <script setup lang="ts">
-type ButtonType = 'regular' | 'delete';
+type ButtonType = 'regular' | 'primary' | 'delete';
 type FillMode = 'filled' | 'bordered'
 
 interface Props {
@@ -36,6 +36,29 @@ defineEmits(['click'])
   // color: black;
 
   &.regular {
+    &.filled {
+      background-color: $surface;
+      color: black;
+
+      &:hover {
+        background-color: $on-surface;
+      }
+    }
+
+    &.bordered {
+      background: none;
+
+      border: 2px solid $surface;
+      color: $surface;
+
+      &:hover {
+        border-color: $on-surface;
+        color: black;
+      }
+    }
+  }
+
+  &.primary {
     &.filled {
       background-color: $primary;
       color: white;

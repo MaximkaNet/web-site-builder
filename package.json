@@ -24,6 +24,7 @@
     "sequelize": "^6.37.7",
     "sequelize-cli": "^6.6.3",
     "sequelize-typescript": "^2.1.6",
+    "vite-svg-loader": "^5.1.0",
     "vue": "^3.5.14",
     "vue-router": "^4.5.1"
   },

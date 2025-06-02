@@ -20,6 +20,10 @@
 import type { Manual } from '~/types/Manual';
 import type { ManualInfo } from '~/types/ManualInfo';
 
+useHead({
+  title: 'Dashboard'
+})
+
 definePageMeta({
   layout: 'dashboard',
   middleware: 'auth'
@@ -66,6 +70,14 @@ const handleCreate = async () => {
   display: grid;
   gap: 15px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media screen and (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .manuals-placeholder {
