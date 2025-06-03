@@ -19,8 +19,11 @@ export const useBuilderStore = defineStore('builder', {
             authorization: `Bearer ${getToken()}`
           }
         })
-      } catch (e) {
-        console.error(e)
+      } catch (e: any) {
+        throw createError({
+          statusCode: e?.response?.status || 500,
+          statusMessage: e?.data?.message || 'Failed to load manual'
+        })
       }
     },
 
@@ -38,8 +41,11 @@ export const useBuilderStore = defineStore('builder', {
           },
           body: this.manual
         })
-      } catch (e) {
-        console.error(e)
+      } catch (e: any) {
+        throw createError({
+          statusCode: e?.response?.status || 500,
+          statusMessage: e?.data?.message || 'Failed to save manual'
+        })
       } finally {
         this.saving = false
       }
