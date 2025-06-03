@@ -1,6 +1,9 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { AuthUser } from '~/types/AuthUser';
+import { db } from '../database';
+import { users } from '../database/schema';
+import { eq } from 'drizzle-orm';
 
 const SECRET_KEY = 'lalalalalalal'
 
@@ -15,7 +18,14 @@ export async function requireAuth(event: any) {
   }
 
   try {
-    return verifyToken(token)
+    const payload = verifyToken(token)
+
+    // Check if the user registered
+    const [user] = await db.select().from(users).where(eq(users.id, payload.id))
+
+    if (!user) { throw 'User not found' }
+
+    return payload
   } catch (error) {
     throw createError({
       statusCode: 401,
