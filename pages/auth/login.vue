@@ -44,7 +44,7 @@ const submitForm = async (event: any) => {
       body: { email, password }
     })
     // localStorage.setItem('token', response.token)
-    await navigateTo('/dashboard')
+    await useRouter().replace('/dashboard')
   } catch (e) {
     if (e instanceof FetchError) {
       invalidCredentials.value = true;

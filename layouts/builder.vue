@@ -3,13 +3,13 @@
     <Topbar page-title="Builder">
       <div style="display: flex; gap: 10px; align-items: center;">
         <div class="network-status">{{ networkStatus }}</div>
-        <IconButton @click="handlePreview" :disabled="offline" type="primary" fill-mode="bordered">
-          <!-- Icon -->
-          <span>Preview</span>
-        </IconButton>
         <IconButton @click="handleDelete" :disabled="offline" type="delete" fill-mode="bordered">
           <!-- Icon -->
           <span>Delete</span>
+        </IconButton>
+        <IconButton @click="handlePreview" :disabled="offline" type="primary" fill-mode="bordered">
+          <!-- Icon -->
+          <span>Preview</span>
         </IconButton>
       </div>
     </Topbar>
@@ -29,7 +29,7 @@ const handleDelete = async (e: any) => {
 
 const handlePreview = async (e: any) => {
   if (!store.manual) return
-  await navigateTo(`/preview/${store.manual.head.id}`)
+  await useRouter().replace(`/preview/${store.manual.head.id}`)
 }
 
 const networkStatus = ref()

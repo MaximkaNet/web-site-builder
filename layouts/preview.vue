@@ -19,6 +19,7 @@ const store = useBuilderStore()
 
 const handleBuild = async (event: any) => {
   if (!store.manual) return
-  await navigateTo(`/builder/${store.manual.head.id}`)
+
+  await useRouter().replace(`/builder/${store.manual.head.id}`)
 }
 </script>

@@ -75,7 +75,7 @@ const submitForm = async (event: any) => {
       method: 'POST',
       body: { email, password }
     })
-    await navigateTo('/dashboard')
+    await useRouter().replace('/dashboard')
   } catch (e) {
     if (e instanceof FetchError) {
       if (e.statusCode == 409) {
